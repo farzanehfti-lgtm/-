@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>مغازه‌دار کوچولو</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap">
+<style>
+:root{--bg:#e8f5ff;--card:#fff;--ink:#1d2b3a;--mut:#5b6b7c;--buy:#3d8bfd;--pro:#22b04b;--bad:#e5484d;--line:#cfe3f5;--aw1:#e5484d;--aw2:#fff;--gold:#ffb400;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#13202e;--card:#1c2d40;--ink:#eef5fc;--mut:#a5b6c8;--line:#2f4660;--buy:#5aa2ff;--pro:#3fcf68;--aw2:#f1e9e9}}
+:root[data-theme="dark"]{--bg:#13202e;--card:#1c2d40;--ink:#eef5fc;--mut:#a5b6c8;--line:#2f4660;--buy:#5aa2ff;--pro:#3fcf68;--aw2:#f1e9e9}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Vazirmatn',Tahoma,sans-serif;line-height:1.7}
+.awning{height:26px;background:repeating-linear-gradient(90deg,var(--aw1) 0 28px,var(--aw2) 28px 56px);border-radius:0 0 18px 18px}
+#app{max-width:560px;margin:0 auto;padding:14px 14px 40px}
+h1{font-size:28px;font-weight:900;margin:10px 0 4px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:10px 0 6px}
+.chip{background:var(--card);border:2px solid var(--line);border-radius:999px;padding:2px 12px;font-weight:700;font-size:14px}
+.dots{display:flex;gap:4px;margin:4px 0 10px}
+.dots i{flex:1;height:8px;border-radius:4px;background:var(--line)}
+.dots i.d{background:var(--pro)}.dots i.c{background:var(--gold)}
+.shop{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px}
+.keeper{font-size:46px;line-height:1}
+.bub{background:var(--card);border:2px solid var(--line);border-radius:16px 16px 16px 4px;padding:6px 12px;font-size:15px;flex:1}
+.card{background:var(--card);border:2px solid var(--line);border-radius:20px;padding:14px;margin-bottom:12px}
+.q{font-size:18px;margin:0 0 12px}.q b{color:var(--buy)}
+.formula{font-weight:900;text-align:center;background:var(--bg);border-radius:12px;padding:4px 8px;margin-bottom:12px;font-size:16px}
+.row{display:grid;grid-template-columns:88px 1fr;align-items:center;gap:8px;margin:8px 0}
+.lb{font-size:13px;font-weight:700;color:var(--mut)}
+.bar{display:flex;height:42px;border-radius:10px;overflow:hidden;gap:2px;min-width:70px}
+.bar i{font-style:normal;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:15px;min-width:34px}
+.bar .b{background:var(--buy)}
+.bar .p{background:var(--pro);background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.22) 0 8px,transparent 8px 16px)}
+.legend{display:flex;gap:14px;font-size:13px;color:var(--mut);margin-top:6px}
+.legend s{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-inline-end:4px;text-decoration:none}
+.tbl{display:grid;grid-template-columns:54px repeat(6,1fr);gap:3px;text-align:center;font-weight:700}
+.tbl b,.tbl span{padding:6px 0;border-radius:8px;background:var(--bg);font-size:14px}
+.tbl b{color:var(--mut);font-size:13px}
+.tbl .q2{background:var(--gold);color:#3a2a00;font-weight:900}
+.tbl .t2{background:rgba(34,176,75,.18);color:var(--pro)}
+.em{font-size:26px;text-align:center;margin-bottom:8px;letter-spacing:2px}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+button{font-family:inherit;cursor:pointer}
+.opt{font-size:19px;font-weight:900;padding:14px 4px;border-radius:16px;border:3px solid var(--line);background:var(--card);color:var(--ink);box-shadow:0 4px 0 var(--line)}
+.opt:active{transform:translateY(3px);box-shadow:0 1px 0 var(--line)}
+.opt.ok{background:var(--pro);border-color:var(--pro);color:#fff;box-shadow:0 4px 0 #168a37}
+.opt.no{background:var(--bad);border-color:var(--bad);color:#fff;box-shadow:none;opacity:.6;animation:sh .3s}
+@keyframes sh{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.go{width:100%;font-size:19px;font-weight:900;padding:12px;border:0;border-radius:16px;background:var(--gold);color:#3a2a00;box-shadow:0 4px 0 #c88b00}
+.eq{text-align:center;font-size:22px;font-weight:900;color:var(--pro);direction:ltr;margin:4px 0 10px}
+.big{text-align:center;font-size:64px;margin:6px 0}
+button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.opt.no{animation:none}}
+.hero{text-align:center;font-size:32px}.sub{text-align:center;color:var(--mut);margin:0 0 12px}
+.bn{display:inline-block;animation:bn 1.2s ease-in-out infinite}
+@keyframes bn{50%{transform:translateY(-8px) scale(1.1)}}
+.mute{border:2px solid var(--line);background:var(--card);border-radius:999px;font-size:16px;padding:2px 8px}
+.scene{display:flex;justify-content:space-between;align-items:flex-end;background:linear-gradient(var(--bg),var(--card));border:2px solid var(--line);border-radius:20px;padding:8px 16px;margin-bottom:8px;overflow:hidden}
+.shopi{font-size:64px;line-height:1}.cust{font-size:54px;line-height:1;position:relative}
+.cust small{position:absolute;top:-12px;inset-inline-end:-16px;font-size:24px}
+.walk{animation:walk .7s ease-out}@keyframes walk{from{transform:translateX(-160px);opacity:0}}
+.tm{height:10px;background:var(--line);border-radius:6px;overflow:hidden;margin-bottom:4px}
+.tm i{display:block;height:100%;background:linear-gradient(90deg,#ff5e5e,var(--gold),var(--pro));transform-origin:right}
+@keyframes tm{from{transform:scaleX(1)}to{transform:scaleX(0)}}
+.tml{font-size:12px;color:var(--mut);margin-bottom:8px}
+.cf{position:fixed;top:-40px;z-index:9;pointer-events:none;animation:fall 2s ease-in forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+.fly{position:fixed;left:50%;top:40%;transform:translateX(-50%);font-size:36px;font-weight:900;color:var(--gold);z-index:9;pointer-events:none;animation:fly 1.2s ease-out forwards;text-shadow:0 2px 0 #7a5400}
+@keyframes fly{to{transform:translate(-50%,-120px) scale(1.3);opacity:0}}
+.opt:not(.ok):not(.no):nth-child(1){border-color:#ffb4a2}.opt:not(.ok):not(.no):nth-child(2){border-color:#a2d2ff}.opt:not(.ok):not(.no):nth-child(3){border-color:#b8e0a0}
+.card.pop{animation:pop .35s}@keyframes pop{from{transform:scale(.94);opacity:.4}}
+@media (prefers-reduced-motion:reduce){.bn,.walk,.cf,.fly,.card.pop{animation:none}}
+.an{min-height:118px;background:var(--bg);border-radius:14px;padding:8px;margin:10px 0;text-align:center}
+.ai{font-size:34px}.cap{font-size:14px;font-weight:700;margin:2px 0}
+.sold{font-size:22px;letter-spacing:2px;word-break:break-all}
+.cg{display:inline-block;background:var(--pro);color:#fff;font-weight:900;border-radius:999px;padding:0 10px;margin:2px;animation:pop2 .5s}
+.cb2{display:inline-block;background:var(--buy);color:#fff;font-weight:900;border-radius:999px;padding:0 10px;margin:2px}
+.mv{display:inline-block;animation:mv .8s ease-out}
+@keyframes pop2{from{transform:translateY(-26px) scale(.4);opacity:0}}
+@keyframes mv{from{transform:translateX(40px);opacity:0}}
+.tot{font-weight:900;margin-inline-start:10px}
+.rp{border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;padding:4px 12px;font-weight:700;font-size:13px}
+@media (prefers-reduced-motion:reduce){.cg,.mv{animation:none}}
+.an{position:relative;height:250px;padding:0;overflow:hidden;background:linear-gradient(#a9dcff,#e8f5ff)}
+.an canvas{width:100%;height:100%;display:block}
+.ov{position:absolute;inset-inline:0;bottom:0;padding:18px 8px 6px;background:linear-gradient(transparent,rgba(0,40,80,.6));color:#fff}
+.ov .cap{color:#fff;text-shadow:0 1px 2px #000a;font-size:15px}
+.ov .cg{background:var(--gold);color:#3a2a00}
+.ov .tot{color:#fff;text-shadow:0 1px 2px #000a}
+.an{position:static;height:auto;min-height:0;overflow:visible;background:none;padding:0;margin:10px 0}
+.an svg{width:100%;height:auto;display:block;border-radius:14px;border:2px solid var(--line)}
+#pig,.co{transform-box:fill-box;transform-origin:center}
+.ov{position:static;background:var(--bg);color:var(--ink);border-radius:12px;margin-top:6px;padding:6px 8px}
+.ov .cap{color:var(--ink);text-shadow:none;font-size:16px}
+.ov .tot{color:var(--ink);text-shadow:none}
+.stage3d{position:relative;width:100%;height:0;padding-top:45%;perspective:900px;overflow:hidden;clip-path:inset(0 round 14px);isolation:isolate;background:#9fd8ff}
+.cam{position:absolute;top:0;left:0;width:100%;height:100%;transform-style:preserve-3d;animation:orbit 9s ease-in-out infinite}
+@keyframes orbit{0%,100%{transform:rotateX(7deg) rotateY(-8deg)}50%{transform:rotateX(7deg) rotateY(8deg)}}
+.an .ly{position:absolute;top:0;left:0;width:100%;height:100%;border:0;border-radius:0;display:block}
+.lg{position:absolute;top:6px;left:6px;z-index:5;background:rgba(255,255,255,.93);color:#1d2b3a;border-radius:9px;padding:1px 10px;font-weight:700;font-size:13px}
+@media (prefers-reduced-motion:reduce){.cam{animation:none;transform:rotateX(7deg) rotateY(-6deg)}}
+
+/* ✨ ارتقای انیمیشن سه‌بعدی کودکانه */
+.stage3d{
+  border:3px solid #fff;
+  box-shadow:0 9px 0 #72b8e8, 0 14px 24px rgba(37,91,140,.22), inset 0 0 0 2px rgba(255,255,255,.35);
+  background:linear-gradient(180deg,#7ed0ff 0%,#dff6ff 72%,#9ce477 72%,#6fc957 100%);
+}
+.stage3d::before{
+  content:"☁️       ✨                 ☁️";
+  position:absolute;z-index:4;top:10px;left:0;width:100%;
+  color:#fff;font-size:21px;letter-spacing:12px;white-space:pre;
+  pointer-events:none;text-shadow:0 2px 4px #4b9bc7;
+  animation:cloudDrift 8s ease-in-out infinite alternate;
+}
+.stage3d::after{
+  content:"✨       ⭐             ✨";
+  position:absolute;z-index:4;top:43%;left:0;width:100%;
+  font-size:18px;letter-spacing:22px;pointer-events:none;
+  opacity:.8;animation:twinkle 2s ease-in-out infinite alternate;
+}
+.cam{filter:drop-shadow(0 7px 3px rgba(39,76,111,.12));animation:orbit 7s ease-in-out infinite, cameraFloat 3s ease-in-out infinite}
+.an svg{box-shadow:inset 0 -5px 0 rgba(255,255,255,.15)}
+#boy{filter:drop-shadow(0 5px 2px rgba(46,66,87,.24))}
+#pig{filter:drop-shadow(0 5px 2px rgba(128,52,88,.22));animation:pigHappy 1.8s ease-in-out infinite}
+#pig ellipse:first-child{stroke:#ffb5cb;stroke-width:2}
+#dy .co{filter:drop-shadow(0 3px 2px rgba(73,57,20,.3))}
+#dy text{paint-order:stroke;stroke:rgba(255,255,255,.65);stroke-width:.6px}
+.lg{box-shadow:0 3px 0 rgba(37,91,140,.18);border:1px solid rgba(255,255,255,.8);animation:badgeFloat 2.4s ease-in-out infinite}
+.ov{border:1px solid rgba(255,255,255,.6);box-shadow:0 4px 12px rgba(32,79,116,.08)}
+.cg,.cb2{box-shadow:0 3px 0 rgba(0,0,0,.12);transform:translateZ(0)}
+.opt{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease}
+.opt:hover{transform:translateY(-3px) scale(1.025);filter:saturate(1.15)}
+.opt.ok{animation:correctBounce .55s ease}
+.go{transition:transform .16s ease,filter .16s ease}
+.go:hover{transform:translateY(-2px);filter:brightness(1.06)}
+@keyframes cameraFloat{0%,100%{margin-top:0}50%{margin-top:2px}}
+@keyframes cloudDrift{from{transform:translateX(-8px)}to{transform:translateX(10px)}}
+@keyframes twinkle{from{opacity:.25;transform:translateY(2px)}to{opacity:.95;transform:translateY(-4px)}}
+@keyframes pigHappy{0%,100%{filter:drop-shadow(0 5px 2px rgba(128,52,88,.22))}50%{filter:drop-shadow(0 8px 5px rgba(255,105,160,.42))}}
+@keyframes badgeFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+@keyframes correctBounce{0%,100%{transform:scale(1)}45%{transform:scale(1.08)}70%{transform:scale(.98)}}
+@media (prefers-reduced-motion:reduce){
+ .stage3d::before,.stage3d::after,.cam,#pig,.lg{animation:none}
+ .opt,.go{transition:none}
+}
+
+</style>
+</head>
+<body>
+<div class="awning"></div>
+<div id="app"></div>
+<script>
+const fa=n=>Number(n).toLocaleString('fa-IR');
+const R=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+const shuffle=a=>a.sort(()=>Math.random()-.5);
+const items=[['🍫','شکلات'],['🍬','آب‌نبات'],['✏️','مداد'],['🍪','شیرینی'],['🎈','بادکنک'],['🍎','سیب']];
+const titles=['سود یک عدد','جدول سود را کامل کن','سود چند عدد؟'];
+const formulas=['سود هر عدد = قیمت فروش − قیمت خرید','هر خانه، به‌اندازه سودِ یک عدد از خانه قبل بیشتر است','سود چند عدد = سودِ هر عدد را چند بار جمع کن'];
+const $=id=>document.getElementById(id);
+const app=$('app');
+let S={};
+const stOf=i=>i<4?0:i<9?1:2;
+const tyOf=i=>i<4?'A':i<9?'T':['N','C','B'][(i-9)%3];
+
+function bars(c,rev){
+  const w=Math.max(c.buy/c.sell*100,25);
+  return `<div class="row"><span class="lb">فروش: ${fa(c.sell)}</span><div class="bar"><i class="b" style="flex:${c.buy}">${fa(c.buy)}</i><i class="p" style="flex:${c.p}">${rev?fa(c.p):'؟'}</i></div></div>
+  <div class="row"><span class="lb">خرید: ${fa(c.buy)}</span><div class="bar" style="width:${w}%"><i class="b" style="flex:1">${fa(c.buy)}</i></div></div>
+  <div class="legend"><span><s style="background:var(--buy)"></s>قیمت خرید (ریال)</span><span><s style="background:var(--pro)"></s>سود</span></div>`;
+}
+function tbl(c,blank,both){
+  let h='<div class="tbl"><b>تعداد</b>';
+  for(let i=1;i<=6;i++)h+=both&&blank==i?'<span class="q2">؟</span>':`<span>${fa(i)}</span>`;
+  h+='<b>سود</b>';
+  for(let i=1;i<=6;i++)h+=blank==i?'<span class="q2">؟</span>':`<span class="t2">${fa(i*c.p)}</span>`;
+  return h+`</div><div class="legend"><span>هر عدد بیشتر، ${fa(c.p)} ریال سود بیشتر</span></div>`;
+}
+function intro(){
+  const c={buy:450,p:50,sell:500};
+  app.innerHTML=`<h1 class="hero"><span class="bn">🏪</span> مغازه‌دار کوچولو</h1><p class="sub">مشتری‌ها آمده‌اند! سود بگیر، سکه جمع کن و مغازه‌ات را بزرگ کن 🚀</p>
+  <div class="card"><p class="q">مغازه‌داری هر 🍫 شکلات را <b>${fa(450)}</b> ریال می‌خرید و <b>${fa(500)}</b> ریال می‌فروخت.</p>
+  ${bars(c,true)}
+  <div class="eq">${fa(500)} − ${fa(450)} = ${fa(50)}</div>
+  <p class="q">پس سود هر شکلات <b style="color:var(--pro)">${fa(50)} ریال</b> است. هر شکلاتِ بیشتر که بفروشد، ${fa(50)} ریال به سودش اضافه می‌شود:</p>
+  ${tbl(c,0)}</div>
+  <button class="go" id="start">باز کردن مغازه! 🔑</button>`;
+  $('start').onclick=()=>{S={i:0,score:0,last:-1,streak:0,best:0};next()};
+}
+function next(){
+  const ty=tyOf(S.i);
+  let k;do{k=R(0,items.length-1)}while(k===S.last);S.last=k;
+  const p=ty=='A'?R(1,4)*50:[50,100][R(0,1)];
+  const buy=(ty=='C'||ty=='B')?p*R(4,12):R(4,16)*50;
+  S.c={it:items[k],ty,p,buy,sell:buy+p,k:R(3,6),n:R(3,9)};
+  S.tries=0;S.done=false;S.wrong=[];S.t0=Date.now();S.fresh=true;S.play='story';S.cust=R(0,3);S.msg='این مسئله را حل کن، مغازه‌دار! 💪';
+  S.a=ans(S.c);S.opts=options(S.c);
+  game();
+}
+function ans(c){return {A:c.p,T:c.k*c.p,N:c.n*c.p,C:c.n,B:c.buy/c.p}[c.ty]}
+function options(c){
+  const a=S.a,p=c.p;
+  const cand={A:[c.sell,c.buy,a+50,a-50,a+100],T:[a+p,a-p,a+2*p,a-2*p],N:[a+p,a-p,a+2*p,a-2*p],C:[a+1,a-1,a+2,a-2,c.n*c.p],B:[a+1,a-1,a+2,c.buy]}[c.ty];
+  const step=c.ty=='A'?50:(c.ty=='T'||c.ty=='N')?p:1;
+  const f=shuffle([...new Set(cand)].filter(x=>x>0&&x!==a));
+  const o=f.slice(0,2);let j=3;
+  while(o.length<2){const x=a+step*j++;if(!o.includes(x))o.push(x)}
+  return shuffle([a,...o]);
+}
+function qtext(c){
+  const x=c.it[0]+' '+c.it[1], base=`مغازه‌داری هر ${x} را <b>${fa(c.buy)}</b> ریال می‌خرید و <b>${fa(c.sell)}</b> ریال می‌فروخت.`;
+  return {
+  A:`${base} سود فروش هر عدد چند ریال است؟`,
+  T:`سود فروش هر ${x} <b>${fa(c.p)}</b> ریال است. در جدول، سود فروش <b>${fa(c.k)}</b> عدد چند ریال است؟`,
+  N:`سود فروش هر ${x} <b>${fa(c.p)}</b> ریال است. این مغازه‌دار <b>${fa(c.n)}</b> عدد فروخته. چقدر سود کرده است؟`,
+  C:`سود فروش هر ${x} <b>${fa(c.p)}</b> ریال است. برای <b>${fa(c.n*c.p)}</b> ریال سود، چند عدد باید بفروشد؟`,
+  B:`${base} چند عدد باید می‌فروخت تا با سود آن‌ها بتواند یک عدد ${x} بخرد؟`}[c.ty];
+}
+const sm=(p,n)=>Array(n).fill(fa(p)).join(' + ')+' = '+fa(p*n);
+function eqtext(c){
+  return {A:`${fa(c.sell)} − ${fa(c.buy)} = ${fa(c.p)}`,T:sm(c.p,c.k),N:sm(c.p,c.n),C:sm(c.p,c.n),B:sm(c.p,S.a)}[c.ty];
+}
+function hint(c){
+  return {A:'سود یک عدد = فروش − خرید. بخش سبز نوار را ببین.',T:`هر خانه ${fa(c.p)} تا از خانه قبل بیشتر است. جدول را ادامه بده.`,N:`سود یک عدد را ${fa(c.n)} بار جمع کن.`,C:`چند بار ${fa(c.p)} را جمع کنی به سود می‌رسی؟`,B:`اول سود یک عدد را پیدا کن؛ بعد ببین چند بار جمع شود تا به ${fa(c.buy)} برسد.`}[c.ty];
+}
+const CUS=['👦','👦🏻','👦🏽','👦🏿'];
+const LV=[['🛒','غرفه‌ی کوچولو'],['🏪','مغازه'],['🏬','فروشگاه بزرگ']];
+let MUTE=false,AC=null;
+function snd(f,d=.12,t='sine',gap=0){if(MUTE)return;try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain(),s=AC.currentTime+gap;o.type=t;o.frequency.value=f;g.gain.setValueAtTime(.08,s);g.gain.exponentialRampToValueAtTime(.001,s+d);o.connect(g);g.connect(AC.destination);o.start(s);o.stop(s+d)}catch(e){}}
+const good=()=>[523,659,784,1047].forEach((f,i)=>snd(f,.15,'triangle',i*.09));
+const bad=()=>snd(160,.25,'sawtooth');
+const up=()=>[523,659,784,659,784,1047].forEach((f,i)=>snd(f,.18,'square',i*.11));
+function burst(n){const E=['🎉','✨','🪙','⭐','🎊'];for(let i=0;i<n;i++){const e=document.createElement('span');e.className='cf';e.textContent=E[R(0,4)];e.style.cssText=`left:${R(2,95)}%;animation-duration:${R(10,22)/10}s;animation-delay:${R(0,4)/10}s;font-size:${R(18,32)}px`;document.body.appendChild(e);setTimeout(()=>e.remove(),2800)}}
+function game(){
+  const c=S.c,i=S.i,st=stOf(i),a=S.a,fr=S.fresh;S.fresh=false;
+  const el=S.done?S.el:(Date.now()-S.t0)/1000;
+  const dots=Array.from({length:15},(_,j)=>`<i class="${j<i||(j==i&&S.done)?'d':j==i?'c':''}"></i>`).join('');
+  const ob=S.opts.map(v=>`<button class="opt ${S.wrong.includes(v)?'no':''} ${S.done&&v===a?'ok':''}" data-v="${v}" ${S.wrong.includes(v)||S.done?'disabled':''}>${fa(v)}</button>`).join('');
+  const vis=c.ty=='A'?bars(c,S.done):(c.ty=='N'?`<div class="em">${c.it[0].repeat(c.n)}</div>`:c.ty=='B'?bars(c,S.done):'')+tbl(c,S.done?0:{T:c.k,N:c.n,C:c.n,B:S.a}[c.ty],c.ty=='C'||c.ty=='B');
+  const fly=S.fly&&S.got>0?`<div class="fly">+${fa(S.got)} 🪙</div>`:'';S.fly=false;
+  app.innerHTML=`${fly}<div class="top"><span class="chip">${LV[st][0]} ${LV[st][1]}</span><span class="chip">${S.streak>1?'🔥 '+fa(S.streak)+' ':''}🐷 ${fa(S.score)}</span><button class="mute" id="mu" aria-label="صدا">${MUTE?'🔇':'🔊'}</button></div>
+  <div class="dots">${dots}</div>
+  <div class='an' id='an'><div class='ov' id='ov'><div class='cap'>🎬 برای دیدن ماجرا، دکمه‌ی پایین را بزن</div></div></div><button class='rp' id='rp'>▶ انیمیشن مسئله</button>
+  <div class="tm"><i style="animation:tm 12s linear forwards;animation-delay:-${el.toFixed(2)}s;animation-play-state:${S.done?'paused':'running'}"></i></div>
+  <div class="tml">⚡ تا پایان نوار درست جواب بده، سکه‌ی جایزه بگیر!</div>
+  <div class="shop"><div class="keeper">${S.done?'🥳':S.wrong.length?'🤔':'🧑‍💼'}</div><div class="bub">${S.msg}</div></div>
+  <div class="card ${fr?'pop':''}"><div class="formula">${formulas[st]}</div><p class="q">${qtext(c)}</p>${vis}</div>
+  ${S.done?`<div class="eq">${eqtext(c)}${c.ty=='C'||c.ty=='B'?`<div style="font-size:15px;direction:rtl;color:var(--ink)">پس ${fa(S.a)} عدد (${fa(S.a)} بار جمع شد)</div>`:''}</div>`:''}
+  <div class="opts">${ob}</div>
+  ${S.done?`<button class="go" id="nx">${i==14?'دیدن نتیجه 🏆':'مشتری بعدی 🚶'}</button>`:''}`;
+  document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>pick(+b.dataset.v));
+  $('mu').onclick=()=>{MUTE=!MUTE;game()};
+  attach3d();$('rp').onclick=()=>run(S.done?'solve':'story');
+  if(S.play){const m=S.play;S.play=null;run(m)}
+  if(S.done)$('nx').onclick=()=>{S.i++;if(S.i==15)end();else if(S.i==4||S.i==9)lvUp();else next()};
+}
+const W={act:[]};
+const NS='http://www.w3.org/2000/svg',FF="font-family='Vazirmatn,Tahoma,sans-serif'";
+const SHIRT=['#4dabf7','#ff922b','#51cf66','#b197fc'];
+const COIN={blue:['#3d8bfd','#2a5fb8'],purple:['#8a6fe8','#5340a0'],dim:['#a59ccf','#756c9f'],gold:['#ffc400','#c68f00']};
+const el=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const at=(g,x,y)=>{g._x=x;g._y=y;g.style.transform=`translate(${x}px,${y}px)`};
+const tf=(g,k)=>`translate(${g._x}px,${g._y}px) scale(${k})`;
+function an(g,fr,ms){if(!g.animate)return Promise.resolve();const a=g.animate(fr,{duration:ms*1.4,easing:'ease-in-out'});W.act.push(a);return a.finished}
+function mv(g,x1,y1,ms,h){const x0=g._x,y0=g._y;at(g,x1,y1);return an(g,[{transform:`translate(${x0}px,${y0}px)`},{transform:`translate(${(x0+x1)/2}px,${Math.min(y0,y1)-(h||0)}px)`,offset:.5},{transform:`translate(${x1}px,${y1}px)`}],ms)}
+const pulse=(g,k,ms)=>an(g,[{transform:tf(g,1)},{transform:tf(g,k),offset:.5},{transform:tf(g,1)}],ms);
+const paint=(g,k)=>{const d=COIN[k],c=g.children;c[0].setAttribute('fill',d[1]);c[1].setAttribute('fill',d[1]);c[2].setAttribute('fill',d[0])};
+function mkCoin(k){const g=el('g',{class:'co'},W.dy);el('rect',{x:-17,y:0,width:34,height:5},g);el('ellipse',{cx:0,cy:5,rx:17,ry:6.5},g);el('ellipse',{cx:0,cy:0,rx:17,ry:6.5,stroke:'rgba(255,255,255,.55)','stroke-width':1.5},g);paint(g,k);return g}
+const cyy=i=>191-7*i,ty=n=>196-7*n-26;
+function buildScene(){
+  const svg=el('svg',{viewBox:'0 0 600 270'});
+  const aw=Array.from({length:8},(_,i)=>{const x=388+i*26.5,c=i%2?'#ffffff':'#e5484d';return `<rect x='${x}' y='6' width='26.5' height='30' fill='${c}'/><circle cx='${x+13.25}' cy='36' r='13.25' fill='${c}'/>`}).join('');
+  const tg=['#3d8bfd','#7b61d6','#22a047'].map((c,i)=>`<g id='tg${i}' style='display:none'><rect rx='12' height='34' y='-17' fill='${c}'/><text y='7' text-anchor='middle' fill='#fff' font-size='20' font-weight='700' ${FF}></text></g>`).join('');
+  svg.innerHTML=`<defs><linearGradient id='sky' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#9fd8ff'/><stop offset='1' stop-color='#e8f5ff'/></linearGradient></defs>
+  <rect width='600' height='270' fill='url(#sky)'/><rect y='236' width='600' height='34' fill='#8fd16f'/><rect x='388' y='14' width='212' height='222' fill='#ffe3a3'/>
+  <g transform='translate(490,182) scale(.9)'><g><animateTransform attributeName='transform' type='translate' values='0 0;0 -2.5;0 0' dur='1.8s' repeatCount='indefinite'/>
+   <path d='M-50,0 L-46,-38 Q-42,-62 -18,-66 L18,-66 Q42,-62 46,-38 L50,0Z' fill='#3b82c4'/>
+   <path d='M-42,-52 L-58,-14' stroke='#3b82c4' stroke-width='18' stroke-linecap='round'/><circle cx='-60' cy='-8' r='9' fill='#f0b98d'/>
+   <rect x='-26' y='-50' width='52' height='50' rx='7' fill='#2f9e44'/><path d='M-18,-66 L-8,-50 M18,-66 L8,-50' stroke='#2f9e44' stroke-width='4'/>
+   <rect x='-9' y='-80' width='18' height='18' fill='#f0b98d'/><ellipse cx='-31' cy='-104' rx='6' ry='8' fill='#f0b98d'/><ellipse cx='31' cy='-104' rx='6' ry='8' fill='#f0b98d'/>
+   <ellipse cx='0' cy='-104' rx='30' ry='36' fill='#f0b98d'/>
+   <path d='M-32,-106 Q-34,-143 0,-143 Q34,-143 32,-106 Q24,-124 0,-124 Q-24,-124 -32,-106Z' fill='#2b1d14'/><ellipse cx='8' cy='-140' rx='20' ry='9' fill='#2b1d14'/>
+   <path d='M-21,-118 Q-12,-124 -4,-119 M21,-118 Q12,-124 4,-119' stroke='#2b1d14' stroke-width='4' fill='none' stroke-linecap='round'/>
+   <ellipse cx='-12' cy='-108' rx='7' ry='6' fill='#fff'/><ellipse cx='12' cy='-108' rx='7' ry='6' fill='#fff'/><circle cx='-13' cy='-108' r='3.4' fill='#2b1d14'/><circle cx='11' cy='-108' r='3.4' fill='#2b1d14'/>
+   <path d='M0,-106 Q-6,-92 0,-91 Q4,-91 5,-94' stroke='#d08f68' stroke-width='3' fill='none' stroke-linecap='round'/>
+   <circle cx='-21' cy='-90' r='5' fill='#f29a9a' opacity='.45'/><circle cx='21' cy='-90' r='5' fill='#f29a9a' opacity='.45'/>
+   <path d='M-17,-88 Q-8,-97 0,-91 Q8,-97 17,-88 Q8,-84 0,-87 Q-8,-84 -17,-88Z' fill='#2b1d14'/>
+   <path d='M-11,-78 Q0,-68 11,-78' stroke='#9b2d20' stroke-width='3.5' fill='none' stroke-linecap='round'/>
+   <path d='M0,-64 L-15,-73 L-15,-55Z M0,-64 L15,-73 L15,-55Z' fill='#d7263d'/><circle cx='0' cy='-64' r='4.5' fill='#a51d2d'/>
+   <g><animateTransform attributeName='transform' type='rotate' values='-6 42 -52;14 42 -52;-6 42 -52' dur='1.1s' repeatCount='indefinite'/><path d='M42,-52 L72,-96' stroke='#3b82c4' stroke-width='18' stroke-linecap='round'/><circle cx='75' cy='-101' r='10' fill='#f0b98d'/></g>
+  </g></g>
+  ${aw}
+  <rect x='378' y='188' width='222' height='50' fill='#c98b4b'/><rect x='378' y='172' width='222' height='16' rx='3' fill='#e3a867'/><rect x='378' y='186' width='222' height='4' fill='#a8703a'/>
+  <rect x='170' y='206' width='202' height='32' rx='3' fill='#9c6b3a'/><rect x='166' y='196' width='210' height='12' rx='3' fill='#c79a63'/>
+  <g id='pig'><ellipse rx='27' ry='21' fill='#ff8fb1'/><ellipse cx='-27' cy='3' rx='9' ry='8' fill='#ff6f9c'/><circle cx='-30' cy='2' r='1.8' fill='#7a2f4f'/><circle cx='-25' cy='2' r='1.8' fill='#7a2f4f'/><path d='M-12,-18 l4,-12 l8,10z' fill='#ff6f9c'/><circle cx='-14' cy='-6' r='3' fill='#222'/><rect x='-18' y='16' width='9' height='9' rx='3' fill='#ff6f9c'/><rect x='10' y='16' width='9' height='9' rx='3' fill='#ff6f9c'/><rect x='-6' y='-21' width='16' height='4' rx='2' fill='#7a2f4f'/><path d='M27,-4 q10,-6 6,4' stroke='#ff6f9c' stroke-width='3' fill='none'/></g>
+    <g id='boy'><ellipse cy='2' rx='28' ry='6' fill='rgba(0,0,0,.2)'/><g><animateTransform attributeName='transform' type='translate' values='0 0;0 -3;0 0' dur='.5s' repeatCount='indefinite'/>
+   <rect x='-14' y='-36' width='11' height='34' rx='4' fill='#ffd6a5'/><rect x='3' y='-36' width='11' height='34' rx='4' fill='#ffd6a5'/>
+   <ellipse cx='-9' cy='-2' rx='10' ry='5' fill='#e03131'/><ellipse cx='9' cy='-2' rx='10' ry='5' fill='#e03131'/>
+   <rect x='-18' y='-52' width='36' height='22' rx='6' fill='#2b4c7e'/><rect class='bs' x='-20' y='-84' width='40' height='36' rx='11' fill='#4dabf7'/>
+   <rect x='-30' y='-82' width='11' height='30' rx='5' fill='#ffd6a5'/><rect x='19' y='-82' width='11' height='30' rx='5' fill='#ffd6a5'/>
+   <rect class='bs' x='-30' y='-84' width='12' height='13' rx='5' fill='#4dabf7'/><rect class='bs' x='18' y='-84' width='12' height='13' rx='5' fill='#4dabf7'/>
+   <circle cy='-102' r='22' fill='#ffd6a5'/><path d='M-23,-104 Q-24,-128 0,-128 Q24,-128 23,-104 Q14,-116 0,-114 Q-14,-116 -23,-104Z' fill='#4a2f1b'/>
+   <circle cx='-8' cy='-102' r='4.6' fill='#fff'/><circle cx='8' cy='-102' r='4.6' fill='#fff'/><circle cx='-7' cy='-102' r='2.4' fill='#222'/><circle cx='9' cy='-102' r='2.4' fill='#222'/>
+   <path d='M-8,-92 Q0,-84 8,-92' stroke='#c2410c' stroke-width='2.6' fill='none' stroke-linecap='round'/>
+   <circle cx='-15' cy='-94' r='3.6' fill='#ff9aa2' opacity='.7'/><circle cx='15' cy='-94' r='3.6' fill='#ff9aa2' opacity='.7'/></g></g>
+  ${tg}<g id='dy'></g>`;
+  const k=[...svg.children];
+  const lay=(a,b,st)=>{const l=el('svg',{viewBox:'0 0 600 270',class:'ly'});l.style.cssText=st;for(let i=a;i<=b;i++)l.appendChild(k[i]);return l};
+  const cam=document.createElement('div');cam.className='cam';
+  cam.append(lay(0,3,'transform:translateZ(-110px) scale(1.122)'),lay(4,23,''),lay(24,31,'transform:translateZ(55px) scale(.939);filter:drop-shadow(0 6px 4px rgba(0,0,0,.28))'));
+  const st=document.createElement('div');st.className='stage3d';st.append(cam);
+  st.insertAdjacentHTML('beforeend',"<div class='lg'>🪙 هر سکه = ۵۰ ریال</div>");W.svg=st;
+  W.dy=st.querySelector('#dy');W.boy=st.querySelector('#boy');W.pig=st.querySelector('#pig');
+  at(W.boy,-60,232);at(W.pig,566,148);
+}
+function attach3d(){if(!W.svg)buildScene();const b=$('an');if(b)b.prepend(W.svg)}
+function reset3d(){
+  W.act.forEach(a=>{try{a.cancel()}catch(e){}});W.act=[];W.dy.innerHTML='';
+  W.svg.querySelectorAll('[id^=tg]').forEach(g=>g.style.display='none');
+  W.svg.querySelectorAll('.bs').forEach(e=>e.setAttribute('fill',SHIRT[S.cust]));at(W.boy,-60,232);
+}
+function tag(i,t,x,y){
+  const g=W.svg.querySelector('#tg'+i),tx=g.querySelector('text'),r=g.querySelector('rect');
+  tx.textContent=t;g.style.display='';const w=tx.getBBox().width+26;
+  r.setAttribute('x',-w/2);r.setAttribute('width',w);at(g,Math.min(Math.max(x,w/2+4),596-w/2),y);
+}
+const enter=()=>mv(W.boy,95,232,1300,0);
+const hop=()=>an(W.boy,[{transform:'translate(95px,232px)'},{transform:'translate(95px,216px)'},{transform:'translate(95px,232px)'}],300).catch(()=>{});
+const wig=()=>an(W.pig,[{transform:tf(W.pig,1)},{transform:tf(W.pig,1.15),offset:.5},{transform:tf(W.pig,1)}],300).catch(()=>{});
+function mkItem(e){const t=el('text',{'font-size':32,'text-anchor':'middle'},W.dy);t.textContent=e;at(t,420,168);return t}
+async function sell(it){await mv(it,118,150,900,60);it.remove();hop()}
+function row(e,j){const t=el('text',{'font-size':22,'text-anchor':'middle'},W.dy);t.textContent=e;at(t,22+j*26,262);an(t,[{opacity:0},{opacity:1}],300).catch(()=>{})}
+async function drop(x,i,k){const m=mkCoin(k);at(m,x,cyy(i));await an(m,[{transform:`translate(${x}px,${cyy(i)-90}px)`,opacity:0},{transform:`translate(${x}px,${cyy(i)}px)`,opacity:1}],160);snd(800+i*35,.05,'triangle');return m}
+async function run(mode){
+  const box=$('an');if(!box)return;attach3d();
+  const id=S.an=(S.an||0)+1,c=S.c,e=c.it[0],sv=mode=='solve';
+  const ok=()=>S.an===id&&$('ov'),w=ms=>new Promise(r=>setTimeout(r,ms));
+  const O=(cap,ex)=>{const o=$('ov');if(o)o.innerHTML=`<div class='cap'>${cap}</div>${ex||''}`};
+  reset3d();
+  const bc=c.buy/50,sc=c.sell/50,pc=c.p/50;
+  try{
+  if(c.ty=='A'){
+    const cA=[],cB=[],it=mkItem(e);
+    O('۱) مغازه‌دار کالا را می‌خرد و پول می‌دهد',`<span class='cb2'>قیمت خرید: ${fa(c.buy)} ریال</span>`);
+    for(let i=0;i<bc;i++)cA.push(await drop(225,i,'blue'));
+    tag(0,`خرید: ${fa(c.buy)} ریال`,175,ty(bc));await w(900);if(!ok())return;
+    O('۲) مشتری کالا را می‌خرد و پول می‌دهد',`<span class='cb2'>قیمت فروش: ${fa(c.sell)} ریال</span>`);
+    await enter();sell(it).catch(()=>{});
+    for(let i=0;i<sc;i++)cB.push(await drop(315,i,'purple'));
+    tag(1,`فروش: ${fa(c.sell)} ریال`,350,ty(sc));await w(1000);if(!ok())return;
+    O(sv?`۳) سود = ${fa(c.sell)} − ${fa(c.buy)} = ${fa(c.p)}`:'۳) سکه‌های هم‌اندازه را کنار هم بگذار؛ سکه‌های اضافه، سود است!',`<span class='cg'>${sv?fa(c.p)+' ریال':'؟'}</span>`);
+    const keep=cB.slice(0,bc),extra=cB.slice(bc);
+    await Promise.all([...cA,...keep].map(m=>pulse(m,1.25,500)));if(!ok())return;
+    keep.forEach(m=>paint(m,'dim'));extra.forEach(m=>paint(m,'gold'));
+    await Promise.all(extra.map(m=>pulse(m,1.5,500)));await w(400);
+    for(const m of extra.reverse()){await mv(m,566,118,700,70);m.remove();snd(1320,.1,'triangle');wig()}
+    tag(2,sv?`سود: ${fa(c.p)} ریال`:'سود: ؟',490,214);return;
+  }
+  const n=c.ty=='T'?c.k:c.ty=='N'?c.n:sv?S.a:3;let tc=0;
+  O('مشتری آمد!',`<span class='cb2'>سود هر عدد: ${fa(c.p)} ریال</span>`);
+  await enter();await w(600);if(!ok())return;
+  for(let j=1;j<=n;j++){
+    O(`فروختن عدد ${fa(j)}`,`<span class='cg'>+${fa(c.p)} ریال سود</span>`);
+    await sell(mkItem(e));row(e,j);
+    for(let k=0;k<pc;k++){const m=mkCoin('gold');at(m,440,166);await mv(m,270,cyy(tc),700,70);tc++;snd(1100,.08,'triangle')}
+    tag(2,sv?`سود: ${fa(tc*50)} ریال`:'سود: ؟',270,ty(tc));await w(500);if(!ok())return;
+  }
+  if(!sv&&(c.ty=='C'||c.ty=='B'))O('و همین‌طور ادامه می‌دهد…');
+  }catch(err){}
+}
+function pick(v){
+  if(S.done)return;
+  if(v===S.a){
+    S.el=(Date.now()-S.t0)/1000;
+    const p=S.tries==0?3:S.tries==1?1:0;let b=0,note='';
+    S.streak=S.tries==0?S.streak+1:0;
+    if(S.tries==0){if(S.el<12){b++;note+=' ⚡ سریع!'}if(S.streak>=5){b+=2;note+=' 🔥 پشت‌سرهم!'}else if(S.streak>=3){b++;note+=' 🔥 پشت‌سرهم!'}}
+    S.got=p+b;S.score+=S.got;S.best=Math.max(S.best,S.streak);S.done=true;S.fly=true;
+    S.msg=(p==3?'آفرین! همان بار اول!':'درست شد!')+note;
+    good();burst(b?36:20);S.play='solve';
+  }else{S.tries++;S.streak=0;S.wrong.push(v);S.msg='نه، دوباره فکر کن. '+hint(S.c);bad();if(navigator.vibrate)navigator.vibrate(60)}
+  game();
+}
+function lvUp(){
+  const st=stOf(S.i);up();burst(44);
+  app.innerHTML=`<div class="card" style="text-align:center"><div class="big bn">${LV[st][0]}</div><h1>مغازه‌ات ارتقا پیدا کرد!</h1>
+  <p class="q">از ${LV[st-1][0]} ${LV[st-1][1]} به ${LV[st][0]} <b>${LV[st][1]}</b></p>
+  <p class="q">${['','حالا مشتری‌ها جدول سود را می‌پرسند.','حالا مشتری‌ها سود چند عدد را می‌خواهند.'][st]}</p></div>
+  <button class="go" id="c2">مشتری بعدی 🚶</button>`;
+  $('c2').onclick=next;
+}
+function end(){
+  const s=S.score,r=s>=70?3:s>=45?2:1,T=['فروشنده‌ی تازه‌کار','تاجر ماهر','تاجر افسانه‌ای'][r-1];
+  good();burst(60);
+  app.innerHTML=`<h1 class="hero">🏆 تمام شد!</h1><div class="card" style="text-align:center"><div class="big bn">${'⭐'.repeat(r)}</div>
+  <p class="q"><b>${T}</b></p><p class="q">🐷 ${fa(s)} سکه جمع کردی<br>🔥 بهترین رشته‌ی درست: ${fa(S.best)}</p>
+  <div class="formula">سود چند عدد = سودِ هر عدد را چند بار جمع کن</div></div>
+  <button class="go" id="again">دوباره بازی کن 🔁</button>`;
+  $('again').onclick=intro;
+}
+intro();
+</script>
+</body>
+</html>
